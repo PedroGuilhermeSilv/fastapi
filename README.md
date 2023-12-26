@@ -18,9 +18,9 @@
 - Pydantic: Uma biblioteca Python para executar a validação de dados. Você declara a "forma" dos dados como classes com atributos.
 
 ## Sync vs Async
-<center>
+
 |     Sync      |    Async      |
 | ------------- | ------------- |
 | Sequencial    | Concorente    |
-</center>
+
 
