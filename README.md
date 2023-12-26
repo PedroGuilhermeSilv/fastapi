@@ -23,4 +23,19 @@
 | ------------- | ------------- |
 | Sequencial    | Concorente    |
 
+- Uma função assincrona semmpre irá retorna uma `coroutine`, para isso foi criando o EVENT LOOP. No python sempre para funções assincronas iremos precisar de um EVENT LOOP para orquestrar a execução da função. Também podemos executar a função assincrona dentro de outra função utilizando o `await` , porém ambos são obrigados a serem assincronos. Olhe o exemplo abaixo:
+```
+async def sum(a,b):
+    return a +b
+
+async def print_sum(a,b):
+    result = await sum(a,b)
+    print(f'resultado é igual a {result}')
+
+event_loop = asyncio.new_event_loop()
+event_loop.run_until_complete(print_sum(2,3))
+
+```
+- Exemplos de aplicação no arquivo `async_sync.py`
+
 
