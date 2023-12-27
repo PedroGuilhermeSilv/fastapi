@@ -23,7 +23,7 @@
 | ------------- | ------------- |
 | Sequencial    | Concorente    |
 
-- Uma função assincrona semmpre irá retorna uma `coroutine`, para isso foi criando o EVENT LOOP. No python sempre para funções assincronas iremos precisar de um EVENT LOOP para orquestrar a execução da função. Também podemos executar a função assincrona dentro de outra função utilizando o `await` , porém ambos são obrigados a serem assincronos. Olhe o exemplo abaixo:
+- Uma função assincrona semmpre irá retorna uma `coroutine` que é uma instância da tarefa que irá ser executada, para isso foi criando o EVENT LOOP. No python sempre para funções assincronas iremos precisar de um EVENT LOOP para orquestrar a execução da função. Também podemos executar a função assincrona dentro de outra função utilizando o `await` , porém ambos são obrigados a serem assincronos. Olhe o exemplo abaixo:
 ```
 async def sum(a,b):
     return a +b
@@ -56,6 +56,6 @@ def converter(from_currency: str,to_currenies: str,price: float):
 
 3. body paramater.
 
-# (Projejto 01)[]
+# (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
 
