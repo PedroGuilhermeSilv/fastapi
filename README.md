@@ -38,4 +38,24 @@ event_loop.run_until_complete(print_sum(2,3))
 ```
 - Exemplos de aplicação no arquivo `async_sync.py`
 
+## Routers
+- No input de dados podemos trabalhar de três formas: 
+1. path parameter.
+```
+@router.get('/converter/{from_currency}')
+def converter(from_currency: str):
+    return "rota converter"
+```
+2. query parameter.
+```
+#/url?to_currencies=USD,EUR,GBP&price=5.55 
+@router.get('/converter/{from_currency}')
+def converter(from_currency: str,to_currenies: str,price: float):
+    return "rota converter"
+```
+
+3. body paramater.
+
+# (Projejto 01)[]
+
 
