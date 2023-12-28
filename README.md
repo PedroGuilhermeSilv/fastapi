@@ -55,7 +55,14 @@ def converter(from_currency: str,to_currenies: str,price: float):
 ```
 
 3. body paramater.
+- Para realizar esse tipo de request será necessário primeiro criar um schema.py informando os tipo de valores que serão passados no body da requisição após ter feito a classe com os atributos basta informa que na rota será passado no body esse tipo de dado. Exxemplo abaixo:
+```
+@router.get('/async/{from_currency}', response_model=ConverterOutput)
+async def async_converter_router(body: ConverterInput,from_currency: str = Path(regex='^[A-Z]{3}$')
+):
+```
 
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
 
+# (OPrjeto 02)[https://github.com/PedroGuilhermeSilv/Projeto02-FastAPI]
