@@ -62,6 +62,20 @@ async def async_converter_router(body: ConverterInput,from_currency: str = Path(
 ):
 ```
 
+## Alembic
+- O alembic será um pluguin responsávbel por nossas migracões para o banco de dados, os comandos mais utilizados são:
+```
+alembic init
+```
+- Após nicilaizar temos que configurar o `env.py` e o `alembic.init` para peguerem das variáveis de ambiente o caminho do banco de dados. Logo após podemos criar um scprit de migration com o comando:
+```
+alembic revision --autogenerate -m "add categories table"
+```
+- Após criar o scprit, podemos executá-lo com o comando:
+``` 
+alembic upgrade head
+```
+
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
 
