@@ -76,6 +76,27 @@ alembic revision --autogenerate -m "add categories table"
 alembic upgrade head
 ```
 
+## Seção 7: Segurança e Autenticação (Continuação Projeto 2)
+
+## Seção 8: Paginação (Continuação Projeto 2)
+- Para adicionar a paginação na sua rota precisaremos de uma lib chamada de `fastapi_pagination`. Instalada a dependência teremos agrupar em nossa rota.
+1. O response model da rota deve ser `Page[]`
+2. O return da rota deve ser `paginate`
+3. adicionar a rota pela função `add_pagination()`
+
+```
+
+@router.get('/list', response_model=Page[CategoryOutput])
+def list_categories():
+    categories = [
+        CategoryOutput(name=f'category {n}', slug=f'category-{n}',id=n)
+        for n in range(100)
+    ]
+    return paginate(categories)
+add_pagination(router)
+
+```
+
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
 
