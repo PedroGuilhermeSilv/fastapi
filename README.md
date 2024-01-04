@@ -96,6 +96,18 @@ def list_categories():
 add_pagination(router)
 
 ```
+- Existem variações de paginação como o `LimitOffsetPage` basta apenas mudar no responde_model:
+
+```
+@router.get('/list', response_model=LimitOffsetPage[CategoryOutput])
+def list_categories():
+    categories = [
+        CategoryOutput(name=f'category {n}', slug=f'category-{n}',id=n)
+        for n in range(100)
+    ]
+    return paginate(categories)
+add_pagination(router)
+```
 
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
