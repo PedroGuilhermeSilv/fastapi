@@ -99,6 +99,8 @@ add_pagination(router)
 - Existem variações de paginação como o `LimitOffsetPage` basta apenas mudar no responde_model:
 
 ```
+from fastapi_pagination import add_pagination, paginate, Page, LimitOffsetPage, Params, LimitOffsetParams
+
 @router.get('/list', response_model=LimitOffsetPage[CategoryOutput])
 def list_categories():
     categories = [
@@ -107,6 +109,28 @@ def list_categories():
     ]
     return paginate(categories)
 add_pagination(router)
+```
+
+- Agora usando o orm do sqlalchemy para fazer a consulta direto do banco não é tão diferente(Lembrando que deve alterar o CategoryOutPut para permitir esse tipo de serealização):
+```
+from fastapi_pagination import add_pagination, paginate, Page, LimitOffsetPage, Params, LimitOffsetParams
+from fastapi_pagination.ext.sqlalchemy import paginate as sqlalchemy_paginate
+
+@router.get('/list/sqlalchemy', response_model=Page[CategoryOutput])
+@router.get('/list-offiset/sqlalchemy', response_model=LimitOffsetPage[CategoryOutput])
+def list_categories(db_session: Session = Depends(get_db_session)):
+    categories = db_session.query(CategoryModel)
+    return sqlalchemy_paginate(categories)
+
+```
+
+class CategoryOutput(Category):
+    id: int
+
+    class ConfigDict:
+        from_attributes=True
+
+
 ```
 
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
