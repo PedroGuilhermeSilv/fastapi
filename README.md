@@ -124,6 +124,7 @@ def list_categories(db_session: Session = Depends(get_db_session)):
 
 ```
 
+```
 class CategoryOutput(Category):
     id: int
 
