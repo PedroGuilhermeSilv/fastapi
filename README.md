@@ -134,6 +134,29 @@ class CategoryOutput(Category):
 
 ```
 
+- Podemos também desaclopar uma parte da paginação sobre a rota. A funnção paginate() recebe params que são os size e page passados nas rotas, quando usamos a função add_parginate() ela consegue deixxar esses valores default. O que vamos fazer é adicionar essses valores como query parametros e recebelos em um use case que irá cuidar da lógica.
+
+
+```
+
+def list_categories_uc(page: int =1, size: int = 50):
+    categories = [
+        CategoryOutput(name=f'category {n}', slug=f'category-{n}',id=n)
+        for n in range(100)
+    ]
+    params = Params(page=page,size=size)
+    return paginate(categories,params=params)
+
+```
+
+```
+@router.get('/list', response_model=Page[CategoryOutput])
+@router.get('/list-offiset', response_model=LimitOffsetPage[CategoryOutput])
+def list_categories(page: int =1, size: int = 50):
+    return list_categories_uc(page=page,size=size)
+
+```
+
 # (Projejto 01)[https://github.com/PedroGuilhermeSilv/API-Convers-o-Moeda]
 
 
